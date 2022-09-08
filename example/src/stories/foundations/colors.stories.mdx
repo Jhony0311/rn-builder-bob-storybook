@@ -1,0 +1,52 @@
+import {Meta} from '@storybook/addon-docs';
+import groupBy from 'lodash.groupby';
+import {palette} from 'my-design-system';
+const styles = {
+  box: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 8,
+    height: 80,
+    border: 'solid 1px gray',
+  },
+  container: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(10, minmax(0, 1fr))',
+    gap: '1rem',
+    marginBottom: '2rem',
+  },
+  subtitle: {
+    textTransform: 'capitalize',
+  },
+};
+const COLOR_NAME = /(color)([a-z]*)(\d+)?/i;
+const parsedColors = Object.keys(palette).map((colorName) => {
+  const nameMatch = colorName.match(COLOR_NAME);
+  return {name: nameMatch[2], type: nameMatch[2].toLowerCase(), shade: nameMatch[3], value: palette[colorName]};
+});
+const colorMap = groupBy(parsedColors, 'type');
+
+<Meta title="Foundations/Colors" />
+
+<Canvas>
+  <Story name="Colors" parameters={{docs: {page: null}}}>
+    <div>
+      {Object.keys(colorMap).map((type) => {
+        const colorsArr = colorMap[type];
+        return (
+          <div key={`color-section-${type}`}>
+            <h4 style={styles.subtitle}>{type}</h4>
+            <div style={styles.container}>
+              {colorsArr.map((color) => (
+                <div key={color.value} style={{...styles.box, backgroundColor: color.value}}>
+                  {color.shade && <p>{color.shade}</p>}
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </Story>
+</Canvas>
