@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig",
+  "exclude": [
+    "example",
+    "_old",
+    "build",
+    "src/**/*.test.tsx",
+    "src/**/*.test.ts",
+    "src/stories",
+    "src/helpers/test-utils.tsx"
+  ]
+}
