@@ -30,7 +30,10 @@ try {
 } catch {}
 
 const getStories = () => {
-  return [require("../src/stories/components/loading.stories.tsx")];
+  return [
+    require("../src/stories/components/insetView.stories.tsx"),
+    require("../src/stories/components/loading.stories.tsx"),
+  ];
 };
 
 configure(getStories, module, false);

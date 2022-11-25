@@ -46,7 +46,8 @@
     "@storybook/addon-ondevice-notes": "^5.3.26",
     "example": "^0.0.0",
     "lodash.groupby": "^4.6.0",
-    "lodash.set": "^4.3.2"
+    "lodash.set": "^4.3.2",
+    "react-native-safe-area-context": "3.4.1"
   },
   "devDependencies": {
     "@arkweid/lefthook": "^0.7.7",
